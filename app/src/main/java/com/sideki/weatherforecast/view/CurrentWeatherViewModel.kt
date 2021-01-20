@@ -13,7 +13,7 @@ import retrofit2.Response
 class CurrentWeatherViewModel @ViewModelInject constructor(val weatherRepository: WeatherRepository) :
     ViewModel() {
 
-    val currentWeather: MutableLiveData<Response<WeatherResponse>> = MutableLiveData()
+    val currentWeather: MutableLiveData<Call<WeatherResponse>> = MutableLiveData()
 
     fun getCurrentWeather(query: String, units: String, lang: String, key: String) {
         viewModelScope.launch {

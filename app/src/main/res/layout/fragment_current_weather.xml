@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Отсутствует подключение к сети интренет" />
+        android:text="Отсутствует подключение к сети интренет" />
 
     <Button
         android:id="@+id/btn_retry"

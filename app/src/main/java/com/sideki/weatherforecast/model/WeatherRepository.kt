@@ -2,6 +2,7 @@ package com.sideki.weatherforecast.model
 
 import com.sideki.weatherforecast.api.WeatherApi
 import com.sideki.weatherforecast.model.entities.WeatherResponse
+import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,7 +15,7 @@ class WeatherRepository @Inject constructor(val weatherApi: WeatherApi) {
         units: String,
         lang: String,
         key: String
-    ): Response<WeatherResponse> {
+    ): Call<WeatherResponse> {
         return weatherApi.getCurrentWeatherApi(query, units, lang, key)
     }
 

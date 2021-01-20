@@ -18,8 +18,8 @@ class NetworcConnectionInterceptor @Inject constructor(
 
     override fun intercept(chain: Interceptor.Chain): Response {
 
-            if (!isInternetAvaible()) throw NoInternetException("Не удалось установить соединение")
-            return chain.proceed(chain.request())
+        if (!isInternetAvaible()) throw NoInternetException("Не удалось установить соединение")
+        return chain.proceed(chain.request())
     }
 
     fun isInternetAvaible(): Boolean {

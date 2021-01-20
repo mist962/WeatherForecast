@@ -10,10 +10,10 @@ interface WeatherApi {
 
     //http://api.openweathermap.org/data/2.5/weather?q=London&appid=141bec87e346370bff8be5569c469afa
     @GET("weather")
-    suspend fun getCurrentWeatherApi(
+    fun getCurrentWeatherApi(
         @Query("q") query: String,
         @Query("units") units: String,
         @Query("lang") lang: String,
         @Query("appid") key: String,
-    ): Response<WeatherResponse>
+    ): Call<WeatherResponse>
 }
