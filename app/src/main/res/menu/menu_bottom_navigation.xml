@@ -5,11 +5,13 @@
     <item
         android:id="@+id/action_current_weather"
         android:icon="@drawable/ic_cloud"
+        android:iconTint="@color/white"
         android:title="@string/current_weather" />
 
     <item
         android:id="@+id/action_history_weather"
         android:icon="@drawable/ic_history"
+        android:iconTint="@color/white"
         android:title="@string/history"/>
 
 </menu>

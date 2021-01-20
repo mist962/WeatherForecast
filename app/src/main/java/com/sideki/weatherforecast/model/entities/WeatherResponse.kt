@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class WeatherResponse(
     var weather: List<Weather>, //Нужно
+    var timezone: String,
     var main: Main, //температура
     var visibility: Int, //видимость
     var wind: Wind, //ветер содержит угол и скорость
@@ -15,6 +16,7 @@ data class WeatherResponse(
 
     data class Weather(
         var main: String,
+        val description: String,
         var icon: String
     )
 
@@ -22,10 +24,6 @@ data class WeatherResponse(
         var temp: Double,
         @SerializedName("feels_like")
         var feelsLike: Double,
-        @SerializedName("temp_min")
-        var tempMin: Double,
-        @SerializedName("temp_max")
-        var tempMax: Double,
         var humidity: Int //Влажность
     )
 

@@ -9,7 +9,11 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--My Colors-->
-    <color name="gray_card">#61AEAEAE</color>
+    <color name="gray_card">#45AEAEAE</color>
+    <color name="gray">#BE757575</color>
+    <color name="dark_blue">#2980B9</color>
+    <color name="dark_blue_appear">#5097C5</color>
+    <color name="black_background">#88000000</color>
 
 
 

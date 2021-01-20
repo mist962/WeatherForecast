@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.sideki.weatherforecast.databinding.ActivityMainWeatherBinding
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main_weather.*
 
+@AndroidEntryPoint
 class MainWeatherActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainWeatherBinding? = null
