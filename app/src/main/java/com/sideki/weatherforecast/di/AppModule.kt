@@ -3,6 +3,9 @@ package com.sideki.weatherforecast.di
 import android.content.Context
 import com.sideki.weatherforecast.api.NetworcConnectionInterceptor
 import com.sideki.weatherforecast.api.WeatherApi
+import com.sideki.weatherforecast.model.data.DataBase
+import com.sideki.weatherforecast.model.data.WeatherDao
+import com.sideki.weatherforecast.model.entities.WeatherDB
 import com.sideki.weatherforecast.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -20,9 +23,9 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provieOkHttp(
+    fun provideOkHttp(
         @ApplicationContext context: Context
-    ): OkHttpClient=
+    ): OkHttpClient =
         OkHttpClient.Builder().addInterceptor(NetworcConnectionInterceptor(context)).build()
 
     @Provides
@@ -31,7 +34,7 @@ class AppModule {
         @ApplicationContext context: Context
     ): Retrofit =
         Retrofit.Builder()
-            .client(provieOkHttp(context))
+            .client(provideOkHttp(context))
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -40,4 +43,9 @@ class AppModule {
     @Singleton
     fun provideWeatherApi(retrofit: Retrofit): WeatherApi =
         retrofit.create(WeatherApi::class.java)
+
+
+    @Provides
+    fun provideWeatherDao(@ApplicationContext context: Context): WeatherDao =
+        DataBase.getDataBase(context).weatherDao()
 }
