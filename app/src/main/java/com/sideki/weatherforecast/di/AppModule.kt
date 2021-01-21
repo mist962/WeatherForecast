@@ -1,11 +1,10 @@
 package com.sideki.weatherforecast.di
 
 import android.content.Context
-import com.sideki.weatherforecast.api.NetworcConnectionInterceptor
+import com.sideki.weatherforecast.api.NetworkConnectionInterceptor
 import com.sideki.weatherforecast.api.WeatherApi
 import com.sideki.weatherforecast.model.data.DataBase
 import com.sideki.weatherforecast.model.data.WeatherDao
-import com.sideki.weatherforecast.model.entities.WeatherDB
 import com.sideki.weatherforecast.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -26,7 +25,7 @@ class AppModule {
     fun provideOkHttp(
         @ApplicationContext context: Context
     ): OkHttpClient =
-        OkHttpClient.Builder().addInterceptor(NetworcConnectionInterceptor(context)).build()
+        OkHttpClient.Builder().addInterceptor(NetworkConnectionInterceptor(context)).build()
 
     @Provides
     @Singleton

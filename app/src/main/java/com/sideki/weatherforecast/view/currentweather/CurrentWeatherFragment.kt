@@ -1,8 +1,9 @@
 package com.sideki.weatherforecast.view.currentweather
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,10 +13,7 @@ import com.sideki.weatherforecast.R
 import com.sideki.weatherforecast.databinding.FragmentCurrentWeatherBinding
 import com.sideki.weatherforecast.model.entities.WeatherDB
 import com.sideki.weatherforecast.model.entities.WeatherResponse
-import com.sideki.weatherforecast.utils.API_KEY
-import com.sideki.weatherforecast.utils.AppQueryTextListener
-import com.sideki.weatherforecast.utils.SEARCH_BUNDLE
-import com.sideki.weatherforecast.utils.ViewStates
+import com.sideki.weatherforecast.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_current_weather.*
 import kotlinx.coroutines.*
@@ -38,11 +36,19 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather), View
 
         _binding = FragmentCurrentWeatherBinding.bind(view)
 
+        val sharedPref: SharedPreferences =
+            requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
         search_view.setOnQueryTextListener(AppQueryTextListener {
             loadData(it)
+
+            //Сохраняет поисковый запрос, для восстановления запроса даже после перезапуска
+            val editor = sharedPref.edit()
+            editor.putString(KEY_SEARCH, it)
+            editor.apply()
         })
 
-        loadData("Севастополь")
+        loadData(sharedPref.getString(KEY_SEARCH, "Севастополь")!!)
     }
 
     private fun loadData(query: String) {
@@ -124,8 +130,7 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather), View
                                 text_wind_speed.text =
                                     "Скорость ветра: ${(response.body()?.wind?.speed).toString()}м/c"
 
-                                val wind_deg = response.body()?.wind?.deg!!
-                                when (wind_deg) {
+                                when (response.body()?.wind?.deg!!) {
                                     in 0..90 -> {
                                         text_wint_deg.text = "Напр-е ветра: Восточное"
                                     }

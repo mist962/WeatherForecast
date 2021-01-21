@@ -10,7 +10,7 @@ import okhttp3.Response
 import java.lang.Exception
 import javax.inject.Inject
 
-class NetworcConnectionInterceptor @Inject constructor(
+class NetworkConnectionInterceptor @Inject constructor(
     @ApplicationContext context: Context
 ) : Interceptor {
 

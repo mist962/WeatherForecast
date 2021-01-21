@@ -3,15 +3,15 @@ package com.sideki.weatherforecast.model.entities
 import com.google.gson.annotations.SerializedName
 
 data class WeatherResponse(
-    var weather: List<Weather>, //Нужно
+    var weather: List<Weather>,
     var timezone: String,
-    var main: Main, //температура
-    var visibility: Int, //видимость
-    var wind: Wind, //ветер содержит угол и скорость
+    var main: Main, //Температура
+    var visibility: Int, //Видимость
+    var wind: Wind, //Направление и скорость ветра
     var clouds: Clouds, //Процент облачности
-    var dt: Int, //дата в UTC
-    var sys: Sys, // время рассвета и заката
-    var name: String, // нейм города
+    var dt: Int, //Дата в UTC
+    var sys: Sys, //Время рассвета и заката
+    var name: String, // Нейм города
 ) {
 
     data class Weather(
@@ -33,7 +33,7 @@ data class WeatherResponse(
     )
 
     data class Clouds(
-        var all: Int // облачность в %
+        var all: Int // Облачность в %
     )
 
     data class Sys(

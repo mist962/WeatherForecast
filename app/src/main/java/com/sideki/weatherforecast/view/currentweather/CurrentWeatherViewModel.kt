@@ -11,10 +11,9 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 
 class CurrentWeatherViewModel @ViewModelInject constructor(
-    val weatherRepository: WeatherRepository,
+    private val weatherRepository: WeatherRepository,
     application: Application,
-) :
-    AndroidViewModel(application) {
+) : AndroidViewModel(application) {
 
     val currentWeather: MutableLiveData<Call<WeatherResponse>> = MutableLiveData()
 

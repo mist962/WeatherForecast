@@ -1,12 +1,11 @@
-package com.sideki.weatherforecast
+package com.sideki.weatherforecast.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.sideki.weatherforecast.R
 import com.sideki.weatherforecast.databinding.ActivityMainWeatherBinding
-import com.sideki.weatherforecast.view.currentweather.CurrentWeatherFragment
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main_weather.*
 

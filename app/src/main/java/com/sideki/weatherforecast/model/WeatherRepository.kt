@@ -12,8 +12,8 @@ import javax.inject.Singleton
 
 @Singleton
 class WeatherRepository @Inject constructor(
-    val weatherApi: WeatherApi,
-    val weatherDao: WeatherDao
+    private val weatherApi: WeatherApi,
+    private val weatherDao: WeatherDao
 ) {
 
     fun getCurrentWeather(

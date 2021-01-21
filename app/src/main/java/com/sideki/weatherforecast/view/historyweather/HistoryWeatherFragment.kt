@@ -16,9 +16,9 @@ class HistoryWeatherFragment : Fragment(R.layout.fragment_history_weather) {
     private var _binding: FragmentHistoryWeatherBinding? = null
     private val binding get() = _binding
 
-    val historyWeatherViewModel by viewModels<HistoryWeatherViewModel>()
+    private val historyWeatherViewModel by viewModels<HistoryWeatherViewModel>()
 
-    val adapter by lazy { HistoryWeatherAdapter() }
+    private val adapter by lazy { HistoryWeatherAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
