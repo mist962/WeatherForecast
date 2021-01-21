@@ -1,21 +1,18 @@
-package com.sideki.weatherforecast.view
+package com.sideki.weatherforecast.view.currentweather
 
 import android.app.Application
+import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.sideki.weatherforecast.model.WeatherRepository
 import com.sideki.weatherforecast.model.entities.WeatherDB
 import com.sideki.weatherforecast.model.entities.WeatherResponse
 import kotlinx.coroutines.launch
 import retrofit2.Call
-import retrofit2.Response
 
 class CurrentWeatherViewModel @ViewModelInject constructor(
     val weatherRepository: WeatherRepository,
-    application: Application
+    application: Application,
 ) :
     AndroidViewModel(application) {
 
@@ -27,6 +24,7 @@ class CurrentWeatherViewModel @ViewModelInject constructor(
         }
     }
 
+    //Добавляем в локаль
     fun addWeather(weatherDB: WeatherDB) {
         viewModelScope.launch {
             weatherRepository.addHistoryWeather(weatherDB)

@@ -10,7 +10,7 @@ import com.sideki.weatherforecast.model.entities.WeatherDB
 @Dao
 interface WeatherDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addWeather(weather: WeatherDB)
 
     @Query("SELECT * FROM weather_table")

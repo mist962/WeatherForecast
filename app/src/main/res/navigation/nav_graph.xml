@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/action_current_weather"
-        android:name="com.sideki.weatherforecast.view.CurrentWeatherFragment"
+        android:name="com.sideki.weatherforecast.view.currentweather.CurrentWeatherFragment"
         android:label="fragment_current_weather"
         tools:layout="@layout/fragment_current_weather" />
     <fragment
         android:id="@+id/action_history_weather"
-        android:name="com.sideki.weatherforecast.view.HistoryWeatherFragment"
+        android:name="com.sideki.weatherforecast.view.historyweather.HistoryWeatherFragment"
         android:label="fragment_history_weather"
         tools:layout="@layout/fragment_history_weather" />
 </navigation>

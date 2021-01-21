@@ -1,10 +1,9 @@
-package com.sideki.weatherforecast.view
+package com.sideki.weatherforecast.view.currentweather
 
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -15,6 +14,7 @@ import com.sideki.weatherforecast.model.entities.WeatherDB
 import com.sideki.weatherforecast.model.entities.WeatherResponse
 import com.sideki.weatherforecast.utils.API_KEY
 import com.sideki.weatherforecast.utils.AppQueryTextListener
+import com.sideki.weatherforecast.utils.SEARCH_BUNDLE
 import com.sideki.weatherforecast.utils.ViewStates
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_current_weather.*
@@ -35,6 +35,7 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather), View
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         _binding = FragmentCurrentWeatherBinding.bind(view)
 
         search_view.setOnQueryTextListener(AppQueryTextListener {
@@ -80,7 +81,7 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather), View
                                                 .submit(100, 100)
                                                 .get()
                                         withContext(Dispatchers.Main) {
-                                            text_description.setCompoundDrawablesWithIntrinsicBounds(
+                                            text_description?.setCompoundDrawablesWithIntrinsicBounds(
                                                 null,
                                                 drawblweForText,
                                                 null,
@@ -186,7 +187,7 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather), View
 
     fun saveToDB(remoteResponse: WeatherResponse?) {
 
-        var b = ""
+        var b = "02d"
 
         remoteResponse!!.weather.forEach {
             b = it.icon
@@ -200,7 +201,7 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather), View
                 .get()
 
             val weatherDB = WeatherDB(
-                id = 1,
+                id = 0,
                 cityName = remoteResponse.name,
                 temperature = (remoteResponse.main.temp).toInt(),
                 image = a
@@ -210,38 +211,38 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather), View
     }
 
     override fun noInternetView() {
-        text_city_not_found.visibility = View.GONE
-        constraint_main.visibility = View.GONE
-        progress_bar.visibility = View.GONE
-        text_no_internet.visibility = View.VISIBLE
+        text_city_not_found?.visibility = View.GONE
+        constraint_main?.visibility = View.GONE
+        progress_bar?.visibility = View.GONE
+        text_no_internet?.visibility = View.VISIBLE
     }
 
     override fun isSuccessfulView() {
-        text_no_internet.visibility = View.GONE
-        text_city_not_found.visibility = View.GONE
-        progress_bar.visibility = View.GONE
-        constraint_main.visibility = View.VISIBLE
+        text_no_internet?.visibility = View.GONE
+        text_city_not_found?.visibility = View.GONE
+        progress_bar?.visibility = View.GONE
+        constraint_main?.visibility = View.VISIBLE
     }
 
     override fun cityNotFoundView() {
-        text_no_internet.visibility = View.GONE
-        constraint_main.visibility = View.GONE
-        progress_bar.visibility = View.GONE
-        text_city_not_found.visibility = View.VISIBLE
+        text_no_internet?.visibility = View.GONE
+        constraint_main?.visibility = View.GONE
+        progress_bar?.visibility = View.GONE
+        text_city_not_found?.visibility = View.VISIBLE
     }
 
     override fun allGoneView() {
-        text_no_internet.visibility = View.GONE
-        text_city_not_found.visibility = View.GONE
-        constraint_main.visibility = View.GONE
-        progress_bar.visibility = View.GONE
+        text_no_internet?.visibility = View.GONE
+        text_city_not_found?.visibility = View.GONE
+        constraint_main?.visibility = View.GONE
+        progress_bar?.visibility = View.GONE
     }
 
     override fun showProgressView() {
-        text_no_internet.visibility = View.GONE
-        constraint_main.visibility = View.GONE
-        text_city_not_found.visibility = View.GONE
-        progress_bar.visibility = View.VISIBLE
+        text_no_internet?.visibility = View.GONE
+        constraint_main?.visibility = View.GONE
+        text_city_not_found?.visibility = View.GONE
+        progress_bar?.visibility = View.VISIBLE
     }
 
     override fun onDestroy() {

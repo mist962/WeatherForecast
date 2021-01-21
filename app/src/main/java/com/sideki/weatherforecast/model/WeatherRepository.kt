@@ -5,6 +5,7 @@ import com.sideki.weatherforecast.api.WeatherApi
 import com.sideki.weatherforecast.model.data.WeatherDao
 import com.sideki.weatherforecast.model.entities.WeatherDB
 import com.sideki.weatherforecast.model.entities.WeatherResponse
+import com.sideki.weatherforecast.utils.API_KEY
 import retrofit2.Call
 import javax.inject.Inject
 import javax.inject.Singleton
